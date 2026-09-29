@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Бейдж — заместитель учителя</title>
+<style>
+  /* Вкладыш 6.0 × 7.4 см, видимое окно 5.5 × 6.8 см.
+     Текст можно править прямо на странице (кликните по нему), затем Ctrl+P → масштаб 100 %. */
+  @page { size: A4; margin: 12mm 15mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, "Helvetica Neue", sans-serif; background: #fff; color: #111; }
+  .note { font-size: 8pt; color: #777; font-style: italic; text-align: center; margin: 0 0 4mm; }
+  .grid { display: grid; grid-template-columns: repeat(3, 60mm); justify-content: center; }
+  .card { width: 60mm; height: 74mm; padding: 3mm 2.5mm; outline: 0.3mm dashed #9aa5b8; outline-offset: -0.15mm; }
+  .win { width: 55mm; height: 68mm; display: flex; flex-direction: column; text-align: center;
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .win > div { display: flex; flex-direction: column; justify-content: center; }
+  .top { height: 12mm; background: #14306e; color: #fff; }
+  .top b { font-size: 10pt; letter-spacing: .3pt; }
+  .top small { font-size: 7pt; color: #c9d8f5; margin-top: .6mm; }
+  .role { height: 16mm; background: #e6eefb; color: #14306e; font-weight: 700; font-size: 13pt; line-height: 1.15; }
+  .name { height: 24mm; border-top: .5mm solid #2b59c3; border-bottom: .5mm solid #2b59c3; font-weight: 700; font-size: 13pt; line-height: 1.35; }
+  .info { height: 9mm; font-size: 8.5pt; color: #555; line-height: 1.3; }
+  .info span { color: #111; }
+  .foot { height: 7mm; background: #2b59c3; color: #fff; font-weight: 700; font-size: 8pt; }
+  [contenteditable]:focus { outline: 1px solid #f90; }
+  @media print { .note { display: none; } }
+</style>
+</head>
+<body>
+<p class="note">Вкладыш 6,0 × 7,4 см, видимая область 5,5 × 6,8 см. Нажмите на текст, чтобы изменить. Печать: масштаб 100 %, вырезать по пунктиру.</p>
+<div class="grid" id="grid"></div>
+<template id="tpl">
+  <div class="card"><div class="win">
+    <div class="top"><b>ДЕНЬ САМОУПРАВЛЕНИЯ</b><small contenteditable>МБОУ «СОШ № ___»</small></div>
+    <div class="role"><p contenteditable>ЗАМЕСТИТЕЛЬ<br>УЧИТЕЛЯ</p></div>
+    <div class="name"><p contenteditable>Фамилия<br>Имя</p></div>
+    <div class="info"><p contenteditable>Предмет: <span>_____________</span></p><p contenteditable>Класс: <span>_______</span></p></div>
+    <div class="foot"><p contenteditable>5 октября 2026 г.</p></div>
+  </div></div>
+</template>
+<script>
+  const g = document.getElementById('grid'), t = document.getElementById('tpl');
+  for (let i = 0; i < 9; i++) g.appendChild(t.content.cloneNode(true));
+</script>
+</body>
+</html>
